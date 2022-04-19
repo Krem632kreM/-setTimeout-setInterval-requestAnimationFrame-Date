@@ -94,8 +94,32 @@ function debounce(callback, delay) {
   }
 }
 
-const input = debounce(() => {
+function throttle(callback, delay) {
+  let isWaiting = false;
+  let savedArgs = null;
+  let savedThis = null;
+  return function wrapper(...args) {
+    if (isWaiting) {
+      savedArgs = args
+      savedThis = this
+      return;
+    }
+    callback.apply(this, args);
+    isWaiting = true;
+
+    setTimeout(() => {
+      isWaiting = false
+    if (savedArgs) {
+      wrapper.apply(savedArgs, savedThis)
+      savedThis = null
+      savedArgs = null
+    }
+    }, delay)
+  }
+}
+
+const input = throttle(() => {
   let input_taker = document.getElementById('input').value;
   document.getElementById('block').innerHTML = input_taker;
-}, 300)
+}, 3000)
 
