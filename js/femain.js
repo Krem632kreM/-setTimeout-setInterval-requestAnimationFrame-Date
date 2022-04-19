@@ -93,6 +93,7 @@ function debounce(callback, delay) {
     }, delay)
   }
 }
+
 const input = debounce(() => {
   let input_taker = document.getElementById('input').value;
   document.getElementById('block').innerHTML = input_taker;
