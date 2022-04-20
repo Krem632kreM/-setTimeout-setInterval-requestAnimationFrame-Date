@@ -5,10 +5,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .main-bg {
+      position: relative;
+    }
+
+    .button_block {
+      display: flex;
+      gap: 10px;
+      padding-bottom: 1%;
+    }
+
+  </style>
 </head>
 <body>
-  <input type="text" id="input" onkeyup="input()">
-<p id="block"></p>
+  <div class="button_block">
+      <input type="text" id="input" onkeyup="input()">
+      <p id="block"></p>
+      <button class="go">Поеxали</button>
+      <button class="reset">reset</button>
+    </div>
+  <img class="main-bg" src="./images/main-bg.jpg">
   <script src="./js/femain.js"></script>
 </body>
 </html>

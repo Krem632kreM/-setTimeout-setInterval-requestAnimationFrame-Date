@@ -123,3 +123,32 @@ const input = throttle(() => {
   document.getElementById('block').innerHTML = input_taker;
 }, 3000)
 
+
+let mainBg = document.querySelector('.main-bg'), count = 0, flyInterval;
+const flyAnimate = () => {
+  flyInterval = requestAnimationFrame(flyAnimate)
+  count++
+  if (count<1000) mainBg.style.top = count + 'px'
+  else cancelAnimationFrame(flyInterval)
+}
+
+const go = document.querySelector('.go')
+const reset = document.querySelector('.reset')
+  let animate = true;
+
+  go.addEventListener('click', () => {
+  console.log(animate)
+  if (animate) {
+  flyInterval = requestAnimationFrame(flyAnimate);
+  animate = false;
+  } else {
+    animate = true;
+    cancelAnimationFrame(flyInterval);
+  } 
+})
+
+reset.addEventListener('click', () => {
+  count = 0;
+  mainBg.style.top = count + 'px'
+})
+
